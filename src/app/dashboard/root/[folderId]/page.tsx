@@ -106,7 +106,9 @@ const FolderView = () => {
 					) : (
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 							{files.map((file: any) => (
-								<div
+								<a
+									href={file.fileUrl}
+									target="_blank"
 									key={file.id}
 									className="bg-card text-foreground rounded-lg overflow-hidden border border-foreground/10 hover:border-foreground/30 transition-all group"
 								>
@@ -137,7 +139,13 @@ const FolderView = () => {
 											</DropdownMenuTrigger>
 											<DropdownMenuContent className="bg-card border-foreground/10 text-foreground">
 												<DropdownMenuItem className="hover:bg-muted cursor-pointer">
-													Download
+													<a
+														href={file.fileUrl}
+														download
+														className="h-full w-full"
+													>
+														Download
+													</a>
 												</DropdownMenuItem>
 												<DropdownMenuItem className="hover:bg-muted cursor-pointer">
 													Remove from favorites
@@ -161,7 +169,7 @@ const FolderView = () => {
 											</span>
 										</div>
 									</div>
-								</div>
+								</a>
 							))}
 						</div>
 					)}

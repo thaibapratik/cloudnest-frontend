@@ -145,7 +145,6 @@ const RecentFiles = () => {
 								<tr
 									key={file.id}
 									className="border-b border-border hover:bg-accent/30 transition-colors cursor-pointer"
-									onClick={() => {}}
 								>
 									<td className="px-6 py-4">
 										<a

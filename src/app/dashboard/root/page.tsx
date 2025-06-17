@@ -184,7 +184,11 @@ const AllFolders = () => {
 										key={file.id}
 										className="group bg-card rounded-xl p-4 border border-border hover:shadow-lg transition-all cursor-pointer flex flex-col gap-4"
 									>
-										<div className="h-24 w-full rounded-lg flex items-center justify-center overflow-hidden relative transition-colors">
+										<a
+											className="h-24 w-full rounded-lg flex items-center justify-center overflow-hidden relative transition-colors"
+											href={file.fileUrl}
+											target="_blank"
+										>
 											{file.thumbnailUrl ? (
 												<img
 													src={file.thumbnailUrl}
@@ -196,7 +200,7 @@ const AllFolders = () => {
 													{getFileIcon(file.type)}
 												</span>
 											)}
-										</div>
+										</a>
 										<div className="flex-1">
 											<h3 className="font-medium text-foreground truncate transition-colors">
 												{file.name}
