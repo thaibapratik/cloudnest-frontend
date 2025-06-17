@@ -50,7 +50,7 @@ const FileTypes: React.FC = () => {
 			try {
 				const token = await getToken();
 				const response = await axios.get(
-					"http://localhost:4000/file/get-all-by-type",
+					"https://cloudnest-pratikthaiba.netlify.app//file/get-all-by-type",
 					{
 						headers: {
 							Authorization: `Bearer ${token}`,

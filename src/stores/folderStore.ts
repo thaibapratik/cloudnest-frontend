@@ -22,7 +22,7 @@ export const useFolderStore = create<FolderStore>((set) => ({
 	createFolder: async (name: string, token: string | null) => {
 		if (!name) name = "New Folder";
 		const response = await axios.post(
-			"http://localhost:4000/folder/create",
+			"https://cloudnest-pratikthaiba.netlify.app//folder/create",
 			{ name: name },
 			{
 				headers: {
@@ -39,7 +39,7 @@ export const useFolderStore = create<FolderStore>((set) => ({
 	getFolders: async (token: string | null, folderId?: number) => {
 		try {
 			const response = await axios.get(
-				"http://localhost:4000/folder/get-all",
+				"https://cloudnest-pratikthaiba.netlify.app//folder/get-all",
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -56,7 +56,8 @@ export const useFolderStore = create<FolderStore>((set) => ({
 
 	getFoldersWithLimit: async (token: string | null, limit: number) => {
 		const response = await axios.get(
-			"http://localhost:4000/folder/get-all?limit=" + limit,
+			"https://cloudnest-pratikthaiba.netlify.app//folder/get-all?limit=" +
+				limit,
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -70,7 +71,7 @@ export const useFolderStore = create<FolderStore>((set) => ({
 
 	deleteFolder: async (id: number, token: string | null) => {
 		const response = await axios.delete(
-			"http://localhost:4000/folder/delete/" + id,
+			"https://cloudnest-pratikthaiba.netlify.app//folder/delete/" + id,
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -87,7 +88,7 @@ export const useFolderStore = create<FolderStore>((set) => ({
 
 	updateFolder: async (id: number, name: string, token: string | null) => {
 		const response = await axios.put(
-			"http://localhost:4000/folder/update/" + id,
+			"https://cloudnest-pratikthaiba.netlify.app//folder/update/" + id,
 			{ name: name },
 			{
 				headers: {
