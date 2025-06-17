@@ -2,8 +2,8 @@
 
 import { useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { MoreVertical, Loader2, Heart, RefreshCw, Folder } from "lucide-react";
+import { useParams } from "next/navigation";
+import { MoreVertical, Loader2, RefreshCw, Folder } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -19,7 +19,6 @@ import { useDropzone } from "react-dropzone";
 const FolderView = () => {
 	const { getToken } = useAuth();
 	const params = useParams();
-	const router = useRouter();
 	const folderId = params.folderId;
 
 	const [isLoading, setIsLoading] = useState<boolean>(false);

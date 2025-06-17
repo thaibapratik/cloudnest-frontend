@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+// Type for total file size and count by category
 interface Total {
 	image: number;
 	video: number;
@@ -22,12 +23,7 @@ interface Total {
 	[key: string]: number;
 }
 
-const FileTypes = () => {
-	const [images, setImages] = useState<any[]>([]);
-	const [videos, setVideos] = useState<any[]>([]);
-	const [audios, setAudios] = useState<any[]>([]);
-	const [documents, setDocuments] = useState<any[]>([]);
-	const [others, setOthers] = useState<any[]>([]);
+const FileTypes: React.FC = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [totalSize, setTotalSize] = useState<Total>({
 		image: 0,
@@ -50,9 +46,9 @@ const FileTypes = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const token = await getToken();
 			setLoading(true);
 			try {
+				const token = await getToken();
 				const response = await axios.get(
 					"http://localhost:4000/file/get-all-by-type",
 					{
@@ -61,22 +57,20 @@ const FileTypes = () => {
 						},
 					}
 				);
-				console.log(response.data);
-
-				setImages(response.data.files.image);
-				setVideos(response.data.files.video);
-				setAudios(response.data.files.audio);
-				setDocuments(response.data.files.document);
-				setOthers(response.data.files.other);
 
 				setTotalCount(response.data.count);
 				setTotalSize(response.data.totalSize);
-			} catch (err: any) {
-				console.log(err);
+			} catch (err) {
+				if (err instanceof Error) {
+					console.error("Error fetching file data:", err.message);
+				} else {
+					console.error("Unknown error occurred.");
+				}
 			} finally {
 				setLoading(false);
 			}
 		};
+
 		fetchData();
 	}, [getToken]);
 
@@ -105,16 +99,20 @@ const FileTypes = () => {
 		</section>
 	);
 };
+
 export default FileTypes;
 
-const FileTypeCard = ({
-	type,
-	count,
-	totalSize,
-}: {
+// Reusable card for each file type
+interface FileTypeCardProps {
 	type: string;
 	count: number;
 	totalSize: number;
+}
+
+const FileTypeCard: React.FC<FileTypeCardProps> = ({
+	type,
+	count,
+	totalSize,
 }) => {
 	const getIcon = () => {
 		switch (type) {

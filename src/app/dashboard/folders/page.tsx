@@ -6,23 +6,8 @@ import { useRouter } from "next/navigation";
 import { Folder, Plus, Search, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	DialogFooter,
-} from "@/components/ui/dialog";
 import { useFolderStore } from "@/stores/folderStore";
 import CreateRenameBox from "@/components/CreateRenameBox";
-
-interface FolderItem {
-	id: string | number;
-	name: string;
-	userId: string;
-	createdAt: Date;
-	updatedAt: Date;
-}
 
 const AllFolders = () => {
 	const { getToken } = useAuth();

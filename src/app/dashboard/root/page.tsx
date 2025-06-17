@@ -39,7 +39,7 @@ const AllFolders = () => {
 			}
 		};
 		fetchData();
-	}, [getToken]);
+	}, [getToken, getFolders, getFilesByFolderId]);
 
 	const handleCreateFolder = async () => {
 		setIsCreating(true);

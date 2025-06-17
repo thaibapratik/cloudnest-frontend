@@ -1,7 +1,6 @@
 "use client";
 
 import SideBar from "@/components/SideBar";
-import Navbar from "@/components/Navbar";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

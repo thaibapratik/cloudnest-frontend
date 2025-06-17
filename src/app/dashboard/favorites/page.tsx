@@ -2,7 +2,6 @@
 
 import { useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Heart, Loader2, MoreVertical, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,7 +19,6 @@ const FavoritesPage = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 	const { getFavoriteFiles, files } = useFileStore();
-	const router = useRouter();
 
 	useEffect(() => {
 		const fetchData = async () => {

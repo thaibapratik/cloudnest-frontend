@@ -18,13 +18,17 @@ const TrashPage = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setLoading(true);
-			const token = await getToken();
-			await getTrashFiles(token);
-			setLoading(false);
+			try {
+				setLoading(true);
+				const token = await getToken();
+				await getTrashFiles(token);
+				setLoading(false);
+			} catch (err) {
+				setError("Internal server error");
+			}
 		};
 		fetchData();
-	}, [getToken]);
+	}, [getToken, getTrashFiles]);
 
 	const handleRestore = async (id: number) => {
 		setRestoring(id);
