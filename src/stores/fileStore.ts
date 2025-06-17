@@ -46,7 +46,7 @@ export const useFileStore = create<FileStore>((set) => ({
 		});
 		try {
 			const response = await axios.post(
-				"https://cloudnest-pratikthaiba.netlify.app/file/upload",
+				"https://cloudnest-backend.onrender.com/file/upload",
 				formData,
 				{
 					headers: {
@@ -97,7 +97,7 @@ export const useFileStore = create<FileStore>((set) => ({
 
 	getFiles: async (token: string | null) => {
 		const response = await axios.get(
-			"https://cloudnest-pratikthaiba.netlify.app/file/list",
+			"https://cloudnest-backend.onrender.com/file/list",
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -111,7 +111,7 @@ export const useFileStore = create<FileStore>((set) => ({
 
 	deleteFile: async (id: number, token: string | null) => {
 		const response = await axios.delete(
-			"https://cloudnest-pratikthaiba.netlify.app/file/" + id,
+			"https://cloudnest-backend.onrender.com/file/" + id,
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -134,7 +134,7 @@ export const useFileStore = create<FileStore>((set) => ({
 		fileExtension: string | undefined
 	) => {
 		const response = await axios.patch(
-			"https://cloudnest-pratikthaiba.netlify.app/file/" + id,
+			"https://cloudnest-backend.onrender.com/file/" + id,
 			{ name: `${name}.${fileExtension}` },
 			{
 				headers: {
@@ -161,7 +161,7 @@ export const useFileStore = create<FileStore>((set) => ({
 	) => {
 		try {
 			const response = await axios.get(
-				`https://cloudnest-pratikthaiba.netlify.app/file/folder/${folderId}`,
+				`https://cloudnest-backend.onrender.com/file/folder/${folderId}`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -179,7 +179,7 @@ export const useFileStore = create<FileStore>((set) => ({
 	favoriteFile: async (id: number, token: string | null) => {
 		try {
 			const { data: file } = await axios.get(
-				`https://cloudnest-pratikthaiba.netlify.app/file/${id}`,
+				`https://cloudnest-backend.onrender.com/file/${id}`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -190,7 +190,7 @@ export const useFileStore = create<FileStore>((set) => ({
 			const currentIsLiked = !file?.isLiked;
 
 			const response = await axios.patch(
-				`https://cloudnest-pratikthaiba.netlify.app/file/` + id,
+				`https://cloudnest-backend.onrender.com/file/` + id,
 				{
 					isLiked: currentIsLiked,
 				},
@@ -217,7 +217,7 @@ export const useFileStore = create<FileStore>((set) => ({
 	getFavoriteFiles: async (token: string | null) => {
 		try {
 			const response = await axios.get(
-				`https://cloudnest-pratikthaiba.netlify.app/file/favorites`,
+				`https://cloudnest-backend.onrender.com/file/favorites`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -236,7 +236,7 @@ export const useFileStore = create<FileStore>((set) => ({
 	softDeleteFile: async (token: string | null, id: number) => {
 		try {
 			const { data: file } = await axios.get(
-				`https://cloudnest-pratikthaiba.netlify.app/file/${id}`,
+				`https://cloudnest-backend.onrender.com/file/${id}`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -247,7 +247,7 @@ export const useFileStore = create<FileStore>((set) => ({
 			const currentIsDeleted = file?.isDeleted;
 
 			const { data } = await axios.patch(
-				`https://cloudnest-pratikthaiba.netlify.app/file/${id}`,
+				`https://cloudnest-backend.onrender.com/file/${id}`,
 				{
 					isDeleted: !currentIsDeleted,
 					deletedAt: currentIsDeleted ? null : new Date(),
@@ -276,7 +276,7 @@ export const useFileStore = create<FileStore>((set) => ({
 		try {
 			console.log("on store working");
 			const { data } = await axios.get(
-				"https://cloudnest-pratikthaiba.netlify.app/file/trash",
+				"https://cloudnest-backend.onrender.com/file/trash",
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
